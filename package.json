@@ -1,0 +1,17 @@
+{
+  "name": "fretmonster",
+  "version": "1.0.0",
+  "description": "Web-based guitar scales & other fretboard fun.",
+  "main": "index.html",
+  "dependencies": {
+    "sass": "^1.25.0"
+  },
+  "scripts": {
+    "sass-build": "sass sass:css --style compressed",
+    "sass-watch": "sass --watch sass:css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nidhhoggr/fretmonster.git"
+  }
+}
