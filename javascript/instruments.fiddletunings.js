@@ -60,7 +60,7 @@ var instruments = {
       0,
       7,
       2,
-      7
+      2
     ]
   },
   "gdad": {
@@ -88,15 +88,15 @@ var instruments = {
     ]
   },
   "aeae": {
-    "name": "DDAE",
+    "name": "AEAE",
     "numStrings": 4,
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
-    "stringLabels": ["E", "A", "D", "D"],
+    "stringLabels": ["E", "A", "E", "A"],
     "stringDiff": [
       0,
       7,
-      2,
-      2
+      0,
+      7
     ]
   }
 };
