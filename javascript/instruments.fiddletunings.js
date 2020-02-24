@@ -57,9 +57,9 @@ var instruments = {
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
     "stringLabels": ["D", "A", "D", "G"],
     "stringDiff": [
-      0,
+      2,
       7,
-      0,
+      2,
       9
     ]
   },
@@ -69,9 +69,9 @@ var instruments = {
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
     "stringLabels": ["D", "A", "D", "A"],
     "stringDiff": [
-      0,
+      2,
       7,
-      0,
+      2,
       7
     ]
   },
