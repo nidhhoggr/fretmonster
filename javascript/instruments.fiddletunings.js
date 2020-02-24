@@ -3,6 +3,18 @@
 // 0    11   10    9    8     7    6     5    4    3     2    1  
 
 var instruments = {
+  "troll": {
+    "name": "Troll (AEAC#)",
+    "numStrings": 4,
+    "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
+    "stringLabels": ["C#", "A", "E", "A"],
+    "stringDiff": [
+      3,
+      7,
+      0,
+      7  
+    ]
+  },
   "gbass": {
     "name": "G-Bass (GDAE)",
     "numStrings": 4,
@@ -85,18 +97,6 @@ var instruments = {
       7,
       2,
       2
-    ]
-  },
-  "troll": {
-    "name": "Troll (AEAC#)",
-    "numStrings": 4,
-    "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
-    "stringLabels": ["C#", "A", "E", "A"],
-    "stringDiff": [
-      3,
-      7,
-      0,
-      7  
     ]
   }
 };
