@@ -72,7 +72,13 @@ var defaultKey = "E",
   highlightingRoot = true,
   highlightingTriads = false;
 
-var fretboardLength = 18;
+var fretboardLength = 0;
+for (var i in instruments) {
+  var instrument = instruments[i];
+  var lastFret = getInstrumentLastFretNumber(instrument);
+  if (lastFret > fretboardLength) fretboardLength = lastFret;
+}
+
 var grid = {},
   notes = ['E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#'],
   keyDiff = {
@@ -214,6 +220,10 @@ function computeStringDiff(note) {
   return (12 - keyDiff[note]) % 12;
 }
 
+function getInstrumentLastFretNumber(instrument) { 
+  return instrument.fretsToLabel[instrument.fretsToLabel.length - 1] + 2; 
+}
+
 function computeScaleTones(scale, key, length) {
 
   // Accepts (1) a scale, (2) a desired key, and (3) the desired length of the fretboard
@@ -232,7 +242,8 @@ function computeScaleTones(scale, key, length) {
   for (var i = 0; i < currentInstrument.numStrings; i++) {
     var fullString = rearrange(scale, (12 - getStringDiffOfStringNum(i)));
     // Extend/shorten the scale to match desired length
-    grid[i + 1] = fullString.concat(fullString).slice(0, length);
+    grid[i + 1] = fullString.concat(fullString).slice(0, getInstrumentLastFretNumber(currentInstrument));
+
   }
   console.log("A " + currentScale.name + " scale in the key of " + key + " has been saved to the variable 'grid'.");
 }
