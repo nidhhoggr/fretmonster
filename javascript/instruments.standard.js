@@ -3,50 +3,24 @@ var instruments = {
     "name": "guitar",
     "numStrings": 6,
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
-    "stringLabels": ["E", "B", "G", "D", "A", "E"],
-    "stringDiff": [
-      0, // E string (high)
-      5, // B string
-      9, // G string
-      2, // D string
-      7, // A string
-      0 // E string (low)
-    ]
+    "strings": ["E", "B", "G", "D", "A", "E"]
   },
   "bass": {
     "name": "bass",
     "numStrings": 4,
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
-    "stringLabels": ["G", "D", "A", "E"],
-    "stringDiff": [
-      9, // G string
-      2, // D string
-      7, // A string
-      0 // E string
-    ]
+    "strings": ["G", "D", "A", "E"]
   },
   "mandolin": {
     "name": "mandolin",
     "numStrings": 4,
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
-    "stringLabels": ["E", "A", "D", "G"],
-    "stringDiff": [
-      0, // E string
-      7, // A string
-      2, // D string
-      9 // G string
-    ]
+    "strings": ["E", "A", "D", "G"]
   },
   "ukulele": {
     "name": "ukulele",
     "numStrings": 4,
     "fretsToLabel": [1, 3, 5, 7, 10, 12, 15],
-    "stringLabels": ["A", "E", "C", "G"],
-    "stringDiff": [
-      7, // A string
-      0, // E string
-      4, // C string
-      9 // G string
-    ]
+    "strings": ["A", "E", "C", "G"]
   }
 };
