@@ -135,7 +135,7 @@ function generateFretboard() {
   var fretboardHTML = '<div class="table_wrapper">\n';
   fretboardHTML += '<table class="string_labels">\n';
   for (var i = 0; i < currentInstrument.numStrings; i++) {
-    fretboardHTML += '<tr><td><div class="cell">' + currentInstrument.stringLabels[i] + '</div></td></tr>\n';
+    fretboardHTML += '<tr><td><div class="cell">' + currentInstrument.strings[i] + '</div></td></tr>\n';
   }
   fretboardHTML += '</table>\n';
   fretboardHTML += '<table class="fretboard">\n';
@@ -145,8 +145,6 @@ function generateFretboard() {
   fretboardHTML += '<tr class="legend"></tr>\n';
   fretboardHTML += '</table>\n';
   fretboardHTML += '</div>';
-
-  console.log(currentInstrument.numStrings);
 
   $('.fretboard_wrapper').append(fretboardHTML);
 
@@ -204,10 +202,17 @@ function tonify(scale) {
       scale[i] = '';
     }
   });
-  console.log(scale);
   return scale;
 }
 
+function getStringDiffOfStringNum(stringNum) {
+  //compute the string diff and provide legacy support for explicity declaring string diff
+  return (currentInstrument.stringDiff && currentInstrument.stringDiff[stringNum]) ? currentInstrument.stringDiff[stringNum] : computeStringDiff(currentInstrument.strings[stringNum]);
+}
+
+function computeStringDiff(note) {
+  return (12 - keyDiff[note]) % 12;
+}
 
 function computeScaleTones(scale, key, length) {
 
@@ -225,7 +230,7 @@ function computeScaleTones(scale, key, length) {
 
   // Populate each string with the scale, adjusted for variable string tone
   for (var i = 0; i < currentInstrument.numStrings; i++) {
-    var fullString = rearrange(scale, (12 - currentInstrument.stringDiff[i]));
+    var fullString = rearrange(scale, (12 - getStringDiffOfStringNum(i)));
     // Extend/shorten the scale to match desired length
     grid[i + 1] = fullString.concat(fullString).slice(0, length);
   }
@@ -263,11 +268,10 @@ function addTonesToFretboard() {
 
     // Give each active fret its absolute note...
     var extendedNotes = notes.concat(notes);
-    extendedNotes = rearrange(extendedNotes, (12 - currentInstrument.stringDiff[stringNum + 1]));
+    extendedNotes = rearrange(extendedNotes, 12 - getStringDiffOfStringNum(stringNum + 1));
     $(stringObj).find('.fret').each(function (fretNum, fretObj) {
       $(fretObj).find('.note').attr('data-note', extendedNotes[fretNum]);
     });
-
 
     // Give each active fret the necessary data attributes...
     $(grid[stringNum + 1]).each(function (gridNum, gridObj) {
@@ -367,7 +371,6 @@ $(window).on('load', function () {
 
   // Instrument Changer!
   $('.js-instrumentSelector a').click(function () {
-    console.log(this);
     $('.js-instrumentSelector a').removeClass('active--toggle');
     $(this).addClass('active--toggle');
     var newInstrument = $(this).data('instrument'); // e.g., 'ukulele'
