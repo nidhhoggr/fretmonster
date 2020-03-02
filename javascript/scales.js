@@ -66,5 +66,9 @@ var scales = {
   "wholetone": {
     "name": "Whote Tone",
     "pattern": "o-o-o-o-o-o-"
+  },
+  "augmented": {
+    "name": "Augmented",
+    "pattern": "o--oo--oo--o"
   }
 };
