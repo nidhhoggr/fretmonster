@@ -1,5 +1,5 @@
 var defaultKey = "E",
-  defaultScale = scales['major'],
+  defaultScale = scales[Object.keys(scales)[0]],
   defaultInstrument = instruments[Object.keys(instruments)[0]],
   currentScale = defaultScale,
   currentKey = defaultKey,
