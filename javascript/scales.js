@@ -58,5 +58,17 @@ var scales = {
   "locrian_mode": {
     "name": "locrian mode",
     "pattern": "oo-o-oo-o-o-"
+  },
+  "diminished_mode": {
+    "name": "diminished mode",
+    "pattern": "o-oo-oo-oo-o"
+  },
+  "superlocrian_mode": {
+    "name": "super locrian mode",
+    "pattern": "oo-oo-o-o-o-"
+  },
+  "wholetone_mode": {
+    "name": "whote tone mode",
+    "pattern": "o-o-o-o-o-o-"
   }
 };
