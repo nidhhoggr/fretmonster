@@ -148,8 +148,7 @@ function tonify(scale) {
 }
 
 function getStringDiffOfStringNum(stringNum) {
-  //compute the string diff and provide legacy support for explicity declaring string diff
-  return 12 - (currentInstrument.stringDiff && currentInstrument.stringDiff[stringNum]) ? currentInstrument.stringDiff[stringNum] : computeStringDiff(currentInstrument.strings[stringNum]);
+  return 12 - computeStringDiff(currentInstrument.strings[stringNum]);
 }
 
 function computeStringDiff(note) {
