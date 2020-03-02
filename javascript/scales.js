@@ -1,74 +1,70 @@
 var scales = {
-  "major": {
-    "name": "major",
-    "pattern": "o-o-oo-o-o-o"
-  },
-  "minor_melodic": {
-    "name": "melodic minor",
-    "pattern": "o-oo-o-o-o-o"
-  },
-  "minor_harmonic": {
-    "name": "harmonic minor",
-    "pattern": "o-oo-o-oo--o"
-  },
-  "minor_natural": {
-    "name": "natural minor",
-    "pattern": "o-oo-o-oo-o-"
-  },
-  "pentatonic_major": {
-    "name": "pentatonic (major)",
-    "pattern": "o-o-o--o-o--"
-  },
-  "pentatonic_minor": {
-    "name": "pentatonic (minor)",
-    "pattern": "o--o-o-o--o-"
-  },
-  "blues_major": {
-    "name": "blues (major)",
-    "pattern": "o-ooo--o-o--"
-  },
-  "blues_minor": {
-    "name": "blues (minor)",
-    "pattern": "o--o-ooo--o-"
-  },
   "ionian_mode": {
-    "name": "ionian mode",
+    "name": "Ionian Mode",
     "pattern": "o-o-oo-o-o-o"
   },
   "dorian_mode": {
-    "name": "dorian mode",
+    "name": "Dorian Mode",
     "pattern": "o-oo-o-o-oo-"
   },
   "phrygian_mode": {
-    "name": "phrygian mode",
+    "name": "Phrygian Mode",
     "pattern": "oo-o-o-oo-o-"
   },
   "lydian_mode": {
-    "name": "lydian mode",
+    "name": "Lydian Mode",
     "pattern": "o-o-o-oo-o-o"
   },
   "mixolydian_mode": {
-    "name": "mixolydian mode",
+    "name": "Mixolydian Mode",
     "pattern": "o-o-oo-o-oo-"
   },
   "aeolian_mode": {
-    "name": "aeolian mode",
+    "name": "Aeolian Mode",
     "pattern": "o-oo-o-oo-o-"
   },
   "locrian_mode": {
-    "name": "locrian mode",
+    "name": "Locrian Mode",
     "pattern": "oo-o-oo-o-o-"
   },
-  "diminished_mode": {
-    "name": "diminished mode",
+  "minor_melodic": {
+    "name": "Melodic Minor",
+    "pattern": "o-oo-o-o-o-o"
+  },
+  "minor_harmonic": {
+    "name": "Harmonic Minor",
+    "pattern": "o-oo-o-oo--o"
+  },
+  "minor_natural": {
+    "name": "Natural Minor",
+    "pattern": "o-oo-o-oo-o-"
+  },
+  "pentatonic_major": {
+    "name": "Pentatonic (major)",
+    "pattern": "o-o-o--o-o--"
+  },
+  "pentatonic_minor": {
+    "name": "Pentatonic (minor)",
+    "pattern": "o--o-o-o--o-"
+  },
+  "blues_major": {
+    "name": "Blues (major)",
+    "pattern": "o-ooo--o-o--"
+  },
+  "blues_minor": {
+    "name": "Blues (minor)",
+    "pattern": "o--o-ooo--o-"
+  },
+  "diminished": {
+    "name": "Diminished",
     "pattern": "o-oo-oo-oo-o"
   },
-  "superlocrian_mode": {
-    "name": "super locrian mode",
+  "superlocrian": {
+    "name": "Super Locrian",
     "pattern": "oo-oo-o-o-o-"
   },
-  "wholetone_mode": {
-    "name": "whote tone mode",
+  "wholetone": {
+    "name": "Whote Tone",
     "pattern": "o-o-o-o-o-o-"
   }
 };
