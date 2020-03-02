@@ -103,6 +103,21 @@ $(window).on('load', function () {
     return false;
   });
 
+  //Dynamically populate the instruments
+  Object.keys(instruments).map(function (k, v) {
+    var instrument = instruments[k];
+    var next = instruments[Object.keys(instruments)[v + 1]];
+    $('.js-instrumentSelector').append('<a data-instrument="' + k + '" class="phs pvxs inline-block" href="#">' + instrument.name + '</a>'.concat(next ? ' | ' : ''));
+  });
+  $('.js-instrumentSelector a').first().addClass('active--toggle');
+
+  //Dynamically populate the scales
+  Object.keys(scales).map(function (k, v) {
+    var scale = scales[k];
+    console.log(scale, k);
+    $('.js-scaleSelector').append('<li class="h3"><a class="block rounded pam" data-scale-name="' + k  + '" href="#">' + scale.name  + '</a></li>');
+  });
+
   // Key Changer!
   $('.js-keySelector a').click(function () {
     $('.js-keySelector a').removeClass('active');
@@ -141,15 +156,6 @@ $(window).on('load', function () {
     $(this).closest('.js-overlay').hide();
     return false;
   })
-
-  //Dynamically populate the instruments
-  Object.keys(instruments).map((k, v) => {
-    var instrument = instruments[k];
-    var next = instruments[Object.keys(instruments)[v + 1]];
-    $('.js-instrumentSelector').append('<a data-instrument="' + k + '" class="phs pvxs inline-block" href="#">' + instrument.name + '</a>'.concat(next ? ' | ' : ''));
-  });
-  
-  $('.js-instrumentSelector a').first().addClass('active--toggle');
 
   // Instrument Changer!
   $('.js-instrumentSelector a').click(function () {
