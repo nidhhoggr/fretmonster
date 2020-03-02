@@ -231,7 +231,7 @@ function addTonesToFretboard() {
         }
         if (highlightingTriads == true) {
           var x = $(stringObj).find('.fret').eq(gridNum).find('.note');
-          if (($(x).attr('data-interval') == "3") || ($(x).attr('data-interval') == "5") || ($(x).attr('data-interval') == "b3") || ($(x).attr('data-interval') == "1")) {
+          if (["1","3","b3","5"].includes($(x).attr('data-interval'))) {
             $(x).addClass('highlight');
           }
         }
