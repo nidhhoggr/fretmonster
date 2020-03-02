@@ -76,10 +76,10 @@ $(window).on('load', function () {
   // Triads-Root toggle
   $('.highlightRoot').click(function () {
     $('.note[data-active="true"]').each(function (i, obj) {
-      if (($(obj).attr('data-interval') == "3") || ($(obj).attr('data-interval') == "5") || ($(obj).attr('data-interval') == "b3")) {
+      if (["3","b3","5"].includes($(obj).attr('data-interval'))) {
         $(this).removeClass('highlight');
       }
-      if ($(obj).attr('data-interval') == "1") {
+      else if ($(obj).attr('data-interval') == "1") {
         $(this).addClass('highlight');
       }
     });
@@ -92,7 +92,7 @@ $(window).on('load', function () {
 
   $('.highlightTriads').click(function () {
     $('.note[data-active="true"]').each(function (i, obj) {
-      if (($(obj).attr('data-interval') == "3") || ($(obj).attr('data-interval') == "5") || ($(obj).attr('data-interval') == "b3") || ($(obj).attr('data-interval') == "1")) {
+      if (["1","3","b3","5"].includes($(obj).attr('data-interval'))) {
         $(this).addClass('highlight');
       }
     });
