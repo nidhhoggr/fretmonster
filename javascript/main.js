@@ -240,7 +240,7 @@ function computeScaleTones(scale, key, length) {
   // Populate each string with the scale, adjusted for variable string tone
   for (var i = 0; i < currentInstrument.numStrings; i++) {
     var fullString = rearrange(scale, (12 - getStringDiffOfStringNum(i)));
-    grid[i + 1] = fullString.concat(fullString).slice(0, length);
+    grid[i] = fullString.concat(fullString).slice(0, length);
 
   }
   console.log("A " + currentScale.name + " scale in the key of " + key + " has been saved to the variable 'grid'.");
@@ -262,14 +262,14 @@ function addTonesToFretboard() {
   $('.fretboard .string').each(function (stringNum, stringObj) {
 
     // Give each active fret the empty noteHTML...
-    $(grid[stringNum + 1]).each(function (gridNum, gridObj) {
+    $(grid[stringNum]).each(function (gridNum, gridObj) {
       if (gridObj != "") {
         $(stringObj).find('.fret').eq(gridNum).html(noteHTML);
       }
     });
 
     // Give each active fret the necessary data attributes...
-    $(grid[stringNum + 1]).each(function (gridNum, gridObj) {
+    $(grid[stringNum]).each(function (gridNum, gridObj) {
       if (gridObj != "") {
         $(stringObj).find('.fret').eq(gridNum).find('.note').attr('data-active', true).attr('data-interval', gridObj);
       }
@@ -283,7 +283,7 @@ function addTonesToFretboard() {
     });
 
     // Give each active fret the necessary data attributes...
-    $(grid[stringNum + 1]).each(function (gridNum, gridObj) {
+    $(grid[stringNum]).each(function (gridNum, gridObj) {
       if (gridObj != "") {
 
         if (showingNotes == true) {
