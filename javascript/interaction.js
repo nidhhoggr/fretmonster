@@ -107,16 +107,23 @@ $(window).on('load', function () {
   Object.keys(instruments).map(function (k, v) {
     var instrument = instruments[k];
     var next = instruments[Object.keys(instruments)[v + 1]];
-    $('.js-instrumentSelector').append('<a data-instrument="' + k + '" class="phs pvxs inline-block" href="#">' + instrument.name + '</a>'.concat(next ? ' | ' : ''));
+    $('.js-instrumentSelector').append('<a data-instrument="' + k + '" class="phs pvxs inline-block">' + instrument.name + '</a>'.concat(next ? ' | ' : ''));
   });
   $('.js-instrumentSelector a').first().addClass('active--toggle');
+
+  //Dynamically populate the keys
+  Object.keys(notes).map(function (k, v) {
+    var note = notes[k];
+    $('.js-keySelector').append('<li class="h3"><a class="block rounded pam" data-key-name="' + note  + '">' + note  + '</a></li>');
+  });
+  $('.js-keySelector a').first().addClass('active');
 
   //Dynamically populate the scales
   Object.keys(scales).map(function (k, v) {
     var scale = scales[k];
-    console.log(scale, k);
-    $('.js-scaleSelector').append('<li class="h3"><a class="block rounded pam" data-scale-name="' + k  + '" href="#">' + scale.name  + '</a></li>');
+    $('.js-scaleSelector').append('<li class="h3"><a class="block rounded pam" data-scale-name="' + k  + '">' + scale.name  + '</a></li>');
   });
+  $('.js-scaleSelector a').first().addClass('active');
 
   // Key Changer!
   $('.js-keySelector a').click(function () {
