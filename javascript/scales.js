@@ -70,5 +70,13 @@ var scales = {
   "augmented": {
     "name": "Augmented",
     "pattern": "o--oo--oo--o"
+  },
+  "symmetrical": {
+    "name": "Symmetrical",
+    "pattern": "oo-o-o--ooo-"
+  },
+  "hungarian_minor": {
+    "name": "Hungarian Minor",
+    "pattern": "o-oo--ooo--o"
   }
 };
