@@ -277,7 +277,7 @@ function addTonesToFretboard() {
 
     // Give each active fret its absolute note...
     var extendedNotes = notes.concat(notes);
-    extendedNotes = rearrange(extendedNotes, 12 - getStringDiffOfStringNum(stringNum + 1));
+    extendedNotes = rearrange(extendedNotes, 12 - getStringDiffOfStringNum(stringNum));
     $(stringObj).find('.fret').each(function (fretNum, fretObj) {
       $(fretObj).find('.note').attr('data-note', extendedNotes[fretNum]);
     });
