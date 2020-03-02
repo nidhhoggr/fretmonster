@@ -107,13 +107,12 @@ $(window).on('load', function () {
   $('.js-keySelector a').click(function () {
     $('.js-keySelector a').removeClass('active');
     $(this).addClass('active');
-    var newKey = $(this).attr('data-key-name');
-    currentKey = newKey;
-    computeScaleTones(currentScale.pattern, newKey, fretboardLength);
+    currentKey = $(this).attr('data-key-name');
+    computeScaleTones(currentScale.pattern, currentKey, fretboardLength);
     addTonesToFretboard();
 
     // Put into function
-    $('.js-summonKeyPicker').text(newKey);
+    $('.js-summonKeyPicker').text(currentKey);
     $(this).closest('.js-overlay').hide();
 
     return false;
@@ -125,7 +124,7 @@ $(window).on('load', function () {
     $(this).addClass('active');
     var newScale = $(this).attr('data-scale-name');
     currentScale = scales[newScale];
-    computeScaleTones(scales[newScale].pattern, currentKey, fretboardLength);
+    computeScaleTones(currentScale.pattern, currentKey, fretboardLength);
     addTonesToFretboard();
 
     // Check for rare chords w/ wacky intervals. Make into function?
@@ -138,7 +137,7 @@ $(window).on('load', function () {
     }
 
     // Put into function
-    $('.js-summonScalePicker').text(scales[newScale].name);
+    $('.js-summonScalePicker').text(currentScale.name);
     $(this).closest('.js-overlay').hide();
     return false;
   })
