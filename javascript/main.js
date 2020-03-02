@@ -149,7 +149,7 @@ function tonify(scale) {
 
 function getStringDiffOfStringNum(stringNum) {
   //compute the string diff and provide legacy support for explicity declaring string diff
-  return (currentInstrument.stringDiff && currentInstrument.stringDiff[stringNum]) ? currentInstrument.stringDiff[stringNum] : computeStringDiff(currentInstrument.strings[stringNum]);
+  return 12 - (currentInstrument.stringDiff && currentInstrument.stringDiff[stringNum]) ? currentInstrument.stringDiff[stringNum] : computeStringDiff(currentInstrument.strings[stringNum]);
 }
 
 function computeStringDiff(note) {
@@ -176,7 +176,7 @@ function computeScaleTones(scale, key, length) {
 
   // Populate each string with the scale, adjusted for variable string tone
   for (var i = 0; i < currentInstrument.numStrings; i++) {
-    var fullString = rearrange(scale, (12 - getStringDiffOfStringNum(i)));
+    var fullString = rearrange(scale, getStringDiffOfStringNum(i));
     grid[i] = fullString.concat(fullString).slice(0, length);
 
   }
@@ -214,7 +214,7 @@ function addTonesToFretboard() {
 
     // Give each active fret its absolute note...
     var extendedNotes = notes.concat(notes);
-    extendedNotes = rearrange(extendedNotes, 12 - getStringDiffOfStringNum(stringNum));
+    extendedNotes = rearrange(extendedNotes, getStringDiffOfStringNum(stringNum));
     $(stringObj).find('.fret').each(function (fretNum, fretObj) {
       $(fretObj).find('.note').attr('data-note', extendedNotes[fretNum]);
     });
