@@ -63,6 +63,10 @@ var scales = {
     "name": "Super Locrian",
     "pattern": "oo-oo-o-o-o-"
   },
+  "lydiandominant": {
+    "name": "Lydian Dominant (Overtone)",
+    "pattern": "o-o-o-oo-oo-"
+  },
   "wholetone": {
     "name": "Whote Tone",
     "pattern": "o-o-o-o-o-o-"
