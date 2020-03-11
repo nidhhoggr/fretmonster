@@ -1,21 +1,15 @@
 var instruments = {
-  "troll": {
-    "name": "Troll (AEAC#)",
+  "abass": {
+    "name": "A-Bass (ADAE)",
     "numStrings": 4,
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
-    "strings": ["C#", "A", "E", "A"],
+    "strings": ["E", "A", "D", "A"],
   },
   "gbass": {
     "name": "G-Bass (GDAE)",
     "numStrings": 4,
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
     "strings": ["E", "A", "D", "G"],
-  },
-  "abass": {
-    "name": "A-Bass (ADAE)",
-    "numStrings": 4,
-    "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
-    "strings": ["E", "A", "D", "A"],
   },
   "gorrlaus": {
     "name": "Gorrlaus (FDAE)",
@@ -46,5 +40,11 @@ var instruments = {
     "numStrings": 4,
     "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
     "strings": ["E", "A", "E", "A"]
+  },
+  "troll": {
+    "name": "Troll (AEAC#)",
+    "numStrings": 4,
+    "fretsToLabel": [1, 3, 5, 7, 9, 12, 15],
+    "strings": ["C#", "A", "E", "A"],
   }
 };
