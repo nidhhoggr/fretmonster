@@ -82,5 +82,9 @@ var scales = {
   "hungarian_minor": {
     "name": "Hungarian Minor",
     "pattern": "o-oo--ooo--o"
+  },
+  "chromatic": {
+    "name": "chromatic",
+    "pattern": "oooooooooooo"
   }
 };

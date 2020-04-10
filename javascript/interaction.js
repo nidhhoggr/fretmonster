@@ -39,10 +39,6 @@ $(document).ready(function () {
   computeScaleTones(defaultScale.pattern, defaultKey, fretboardLength);
   addTonesToFretboard();
 
-});
-
-$(window).on('load', function () {
-
   // Lets the user tweak or toggle some misc display options.
 
   // Notes-Interval toggle
