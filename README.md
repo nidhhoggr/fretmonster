@@ -1,8 +1,9 @@
-#FretMonster
+# FretMonster
 
 #### About this project
 
 Forked and improved from [davidpots/fretmonster](https://github.com/davidpots/fretmonster)
+
 The following improvements were made:
 
 - remove the meta redirect as it breaks development
