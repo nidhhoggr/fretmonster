@@ -1,6 +1,14 @@
+String.prototype.removePitch = function() {
+  return this.replace(/\d+/g, '');
+}
+
+String.prototype.getPitch = function() {
+  return parseInt(this.match(/(\d+)/).pop());
+}
+
 var defaultScale = scales[Object.keys(scales)[0]],
   defaultInstrument = instruments[Object.keys(instruments)[0]],
-  defaultKey = defaultInstrument.strings.slice(-1)[0],
+  defaultKey = defaultInstrument.strings.slice(-1)[0].removePitch(),
   currentScale = defaultScale,
   currentKey = defaultKey,
   currentInstrument = defaultInstrument,
@@ -50,6 +58,7 @@ var grid = {},
     11: 'b7',
     12: '7'
   };
+
 
 function rearrange(toSplit, divider) {
 
@@ -148,7 +157,7 @@ function tonify(scale) {
 }
 
 function getStringDiffOfStringNum(stringNum) {
-  return 12 - computeStringDiff(currentInstrument.strings[stringNum]);
+  return 12 - computeStringDiff(currentInstrument.strings[stringNum].removePitch());
 }
 
 function computeStringDiff(note) {
@@ -238,6 +247,85 @@ function addTonesToFretboard() {
         $(stringObj).find('.fret').eq(gridNum).find('.note').text(dotHTML);
       }
     });
+
+    notePlayer();
   });
 
+  //Guitar strings are E2=82.41Hz, A2=110Hz, D3=146.8Hz, G3=196Hz, B3=246.9Hz, E4=329.6Hz
+  //Bass strings are (5th string) B0=30.87Hz, (4th string) E1=41.20Hz, A1=55Hz, D2=73.42Hz, G2=98Hz
+  //Mandolin & violin strings are G3=196Hz, D4=293.7Hz, A4=440Hz, E5=659.3Hz
+  //Viola & tenor banjo strings are C3=130.8Hz, G3=196Hz, D4=293.7Hz, A4=440Hz
+  //Cello strings are C2=65.41Hz, G2=98Hz, D3=146.8Hz, A3=220Hz
+  function calculateOctaveFromStringAndNote({
+    stringNum, 
+    fretNum, 
+    note,
+  }) {
+    const noteToPositionMapping = {
+      'C': 0,
+      'C#': 1,
+      'Db': 1,
+      'D': 2,
+      'D#': 3,
+      'Eb': 3,
+      'E': 4,
+      'F': 5,
+      'F#': 6,
+      'Gb': 6,
+      'G': 7,
+      'G#': 8,
+      'Ab': 8,
+      'A': 9,
+      'A#': 10,
+      'Bb': 10,
+      'B': 11,
+    };
+    const currentInstrumentStrings = currentInstrument.strings.slice().reverse();
+    const openString = currentInstrumentStrings[stringNum];
+    if (fretNum > 0) {
+      const openStringPosition = noteToPositionMapping[openString.removePitch()];
+      const notePosition = noteToPositionMapping[note];
+      if (fretNum > 11 && notePosition < openStringPosition) {
+        return openString.getPitch() + 2;
+      }
+      if (notePosition < openStringPosition || fretNum > 11) {
+        return openString.getPitch() + 1;
+      }
+    }
+    return openString.getPitch();
+  }
+
+  function notePlayer() {
+    if (!window.Tone) {
+      return console.info("include tonejs library for note player");
+    }
+    $($(".string").get().reverse()).each(function(stringNum) {
+      //we create a new instance for each string to we can use drones and chrords
+      const tone_instrument = new Tone.Synth().toMaster();
+      $(this).find(".fret").each(function(fretNum) {
+        //not all frets have notes and all frets only have one note
+        $(this).find(".note").each(function() {
+          const note = $(this).data("note");
+          const octave = calculateOctaveFromStringAndNote({
+            stringNum, 
+            fretNum, 
+            note,
+          });
+          //clean up
+          $(this).off("mousedown");
+          $(this).off("mouseup");
+
+          $(this).on("mousedown", function() {
+              console.log({"action": "attack", stringNum, fretNum, note, octave});
+              return tone_instrument.triggerAttack(`${note}${octave}`);
+          });
+          //not triggered on right clicks
+          $(this).on("mouseup", () => {
+              console.log({"action": "release", stringNum, fretNum, note, octave});
+              return tone_instrument.triggerRelease();
+          });
+        });
+      });
+    });
+  }
 }

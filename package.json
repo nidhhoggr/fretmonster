@@ -4,7 +4,9 @@
   "description": "Web-based guitar scales & other fretboard fun.",
   "main": "index.html",
   "dependencies": {
-    "sass": "^1.25.0"
+    "jquery": "^3.4.1",
+    "sass": "^1.25.0",
+    "tone": "^13.8.25"
   },
   "scripts": {
     "sass-build": "sass sass:css --style compressed",
