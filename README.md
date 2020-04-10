@@ -6,6 +6,7 @@ Forked and improved from [davidpots/fretmonster](https://github.com/davidpots/fr
 
 The following improvements were made:
 
+- added a note player to calculate the pitch of each string and play the note
 - remove the meta redirect as it breaks development
 - move Rakefile to npm (more appropriate for clientside deps)
 - externalize jquery dependency
